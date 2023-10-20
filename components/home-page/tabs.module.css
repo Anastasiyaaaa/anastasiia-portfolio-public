@@ -1,0 +1,39 @@
+.tabsSection {
+    width: 75%;
+    max-width: 80rem;
+    margin: var(--size-8) auto;
+}
+
+.tabsInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+
+}
+
+.tabsInfo li {
+    display: inline-block;
+    font: inherit;
+    border: 1px solid var(--color-grey-100);
+    border-radius: 6px;
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    background-color: var(--color-grey-800);
+    text-align: center;
+    color: #d5bdfc;
+    border-color: transparent;
+    margin: 0 5px 5px;
+    cursor: default;
+}
+
+@media (max-width: 480px) {
+    .tabsSection {
+        width: 100%;
+    }
+
+    .tabsInfo li {
+        padding: 0.5rem 0.8rem;
+        font-size: 14px;
+    }
+}
