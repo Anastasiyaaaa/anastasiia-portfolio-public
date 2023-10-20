@@ -28,8 +28,6 @@ async function handler(req, res) {
     } catch (error) {
       return res.status(400).json({message: error.message})
     }
-    console.log('time')
-    console.timeLog();
   }
 }
 
