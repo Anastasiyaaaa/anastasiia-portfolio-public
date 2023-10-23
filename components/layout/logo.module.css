@@ -6,6 +6,12 @@
   color: #d5bdfc;
 }
 
+.logo:hover,
+.logo:active,
+.logo.active {
+  color: var(--color-grey-200);
+}
+
 @media (min-width: 768px) {
   .logo {
     font-size: var(--size-8);
