@@ -3,6 +3,8 @@ import ProjectSearch from "../../components/projects/projects-search/projects-se
 import {useRouter} from "next/router";
 import {getAllProjects} from "../../helpers/api-util";
 import Head from "next/head";
+import ErrorContext from "../../components/ui/error-context";
+
 
 function AllProjectsPage({projects}) {
   const router = useRouter();
@@ -10,6 +12,10 @@ function AllProjectsPage({projects}) {
   function findProjectsHandler(type) {
     const fullPath = `/projects/type/${type}`;
     router.push(fullPath);
+  }
+
+  if (!projects || projects.length === 0) {
+    return <ErrorContext/>
   }
 
   return (

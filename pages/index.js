@@ -1,42 +1,23 @@
 import Hero from "../components/home-page/hero";
 import FeaturedProjects from "../components/home-page/featuredProjects";
-import Button from "../components/ui/button";
-import ErrorAlert from "../components/ui/error-alert";
 import SkillsTabs from "../components/home-page/tabs";
 import {getAllProjects, getReactProjects} from "../helpers/api-util";
+import ErrorContext, {openPdf} from "../components/ui/error-context";
+import Button from "../components/ui/button";
 
 
-function HomePage({hero, projects, messageProject, messageHero}) {
+function HomePage({hero, projects}) {
 
-  const openPdf = () => {
-    const pdfURL = '/files/ao_cv.pdf';
-    window.open(pdfURL, '_blank');
-  };
-
-  const cv =  <div style={{paddingTop: '40px', textAlign: 'center'}}>
-    <Button onClick={openPdf}>Check CV</Button>
-  </div>
-
-  if (!hero &&
-    hero.length === 0 &&
-    !projects &&
-    projects.length === 0) {
-
-    return (
-      <ErrorAlert>
-        <p>Oops, something wrong: <br/>
-          {messageProject} <br/>
-          {messageHero}
-        </p>
-        <Button onClick={openPdf}>Check CV</Button>
-      </ErrorAlert>
-    )
+  if (!hero || hero.length === 0 || !projects || projects.length === 0) {
+    return <ErrorContext/>
   }
 
   return (
     <>
       {hero && <Hero hero={hero[0]}/>}
-      {cv}
+      <div style={{paddingTop: '40px', textAlign: 'center'}}>
+        <Button onClick={openPdf}>Check CV</Button>
+      </div>
       {projects && projects.length > 0 &&
         <FeaturedProjects projects={projects}/>
       }
